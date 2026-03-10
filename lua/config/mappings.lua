@@ -14,8 +14,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- unmap
-map('n','s', "")
-map('n','S', "")
+-- map('n','s', "")
+-- map('n','S', "")
 
 map("i", "jk", "<Esc>")
 map("n", "<C-x>", "<C-u>")
@@ -60,11 +60,9 @@ map('t', '<leader>t', '<C-\\><C-n><CMD>:ToggleTerm<CR>')
 map('t', "<Esc>", "<C-\\><C-n>")
 
 -- lsp
+-- bring up completion suggestions. 
 vim.keymap.set('i', '<c-space>', function()
     vim.lsp.completion.get()
-end)
-vim.keymap.set('i', '<leader>s', function()
-    vim.lsp.buf.signature_help()
 end)
 -- Clear search result highlights.
 map('n', "<leader>l", ":noh<CR>")

@@ -10,6 +10,9 @@ return {
     'typescriptreact',
   },
   on_attach = function(client, bufnr)
+      -- Don't overwrite my colorscheme... 
+      client.server_capabilities.semanticTokensProvider = nil
+
       vim.lsp.completion.enable(true, client.id, bufnr, {
 		autotrigger = true,
 		convert = function(item)
