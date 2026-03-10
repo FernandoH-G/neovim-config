@@ -184,6 +184,7 @@ local function lsp_on_attach(ev)
 	if not client then
 		return
 	end
+	client.server_capabilities.semanticTokensProvider = nil
 
 	local bufnr = ev.buf
 	local opts = { silent = true, buffer = bufnr }
