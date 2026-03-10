@@ -5,8 +5,7 @@ local function map(m, k, v)
 	vim.keymap.set(m, k, v, { silent = true })
 end
 
-local api = require('Comment.api')
-
+local api = require("Comment.api")
 
 -- set leader
 map("", "<Space>", "<Nop>")
@@ -19,19 +18,18 @@ vim.g.maplocalleader = " "
 
 map("i", "jk", "<Esc>")
 map("n", "<C-x>", "<C-u>")
-vim.keymap.set('i', '<C-_>', api.toggle.linewise.current)
+vim.keymap.set("i", "<C-_>", api.toggle.linewise.current)
 
--- toggle nvim tree 
+-- toggle nvim tree
 -- Not sure why <C-S-s> doesn't work.
-map('n', '<leader>e', ':NvimTreeToggle<CR>')
-
+map("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 -- buffers
 map("n", "<S-l>", ":bnext<CR>")
 map("n", "<S-h>", ":bprevious<CR>")
 map("n", "<leader>q", ":bd<CR>")
 --ver split current buffer + move to the new window.
-map('n', '<leader>vs', ':vsplitCR><CMD>wincmd l<CR>')
+map("n", "<leader>vs", ":vsplitCR><CMD>wincmd l<CR>")
 
 -- buffer position nav + reorder
 -- map('n', '<AS-h>', '<Cmd>BufferMovePrevious<CR>')
@@ -55,16 +53,15 @@ map("n", "<leader>G", ":lua require('fzf-lua').grep_cword()<CR>") --grep word un
 -- map("n", "<leader>Ff", ":lua require('fzf-lua').files({ cwd = '..' })<CR>") --search above
 
 -- terminal stuff
-map('n', '<leader>t', ":ToggleTerm<CR>")
-map('t', '<leader>t', '<C-\\><C-n><CMD>:ToggleTerm<CR>')
-map('t', "<Esc>", "<C-\\><C-n>")
+map("n", "<leader>t", ":ToggleTerm<CR>")
+map("t", "<leader>t", "<C-\\><C-n><CMD>:ToggleTerm<CR>")
+map("t", "<Esc>", "<C-\\><C-n>")
 
 -- lsp
--- bring up completion suggestions. 
-vim.keymap.set('i', '<c-space>', function()
-    vim.lsp.completion.get()
-end)
+-- bring up completion suggestions.
+-- vim.keymap.set("i", "<c-space>", function()
+-- 	vim.lsp.completion.get()
+-- end)
 -- Clear search result highlights.
-map('n', "<leader>l", ":noh<CR>")
+map("n", "<leader>l", ":noh<CR>")
 -- vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, { desc = "trigger autocompletion" })
-

@@ -14,7 +14,6 @@ local options = {
 	ttyfast = true, --faster scrolling
 	smoothscroll = true,
 	title = true, --automatic window titlebar
-	
 	number = true, --numbering lines
 	relativenumber = true, --toggle bound to leader nn
 	numberwidth = 4,
@@ -22,14 +21,14 @@ local options = {
 	smarttab = true, --indentation stuff
 	cindent = true,
 	autoindent = false,
-    tabstop = 4,
+	tabstop = 4,
 	expandtab = true,
 	shiftwidth = 4,
 
 	foldmethod = "expr",
 	foldlevel = 99, --disable folding, lower #s enable
 	foldexpr = "nvim_treesitter#foldexpr()",
-	
+
 	termguicolors = true,
 
 	ignorecase = true, --ignore case while searching
@@ -38,8 +37,8 @@ local options = {
 	conceallevel = 2, --markdown conceal
 	concealcursor = "nc",
 
-	splitkeep = 'screen', --stablizie window open/close
-    scrolloff = 999,
+	splitkeep = "screen", --stablizie window open/close
+	scrolloff = 999,
 }
 
 for k, v in pairs(options) do

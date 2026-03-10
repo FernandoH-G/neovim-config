@@ -1,27 +1,27 @@
 
 ---@type vim.lsp.Config
-return {
-  init_options = { hostInfo = 'neovim' },
-  cmd = { 'typescript-language-server', '--stdio' },
-  filetypes = {
-    'javascript',
-    'javascriptreact',
-    'typescript',
-    'typescriptreact',
-  },
-  on_attach = function(client, bufnr)
-      -- Don't overwrite my colorscheme... 
-      client.server_capabilities.semanticTokensProvider = nil
-
-      vim.lsp.completion.enable(true, client.id, bufnr, {
-		autotrigger = true,
-		convert = function(item)
-            print("ITEM:", item)
-          return { abbr = item.label:gsub("%b()", "") }
-		end,
-      })
-   end
-}
+-- return {
+--   init_options = { hostInfo = 'neovim' },
+--   cmd = { 'typescript-language-server', '--stdio' },
+--   filetypes = {
+--     'javascript',
+--     'javascriptreact',
+--     'typescript',
+--     'typescriptreact',
+--   },
+--   on_attach = function(client, bufnr)
+--       -- Don't overwrite my colorscheme... 
+--       client.server_capabilities.semanticTokensProvider = nil
+--
+--       vim.lsp.completion.enable(true, client.id, bufnr, {
+-- 		autotrigger = true,
+-- 		convert = function(item)
+--             print("ITEM:", item)
+--           return { abbr = item.label:gsub("%b()", "") }
+-- 		end,
+--       })
+--    end
+-- }
 
 ---@type vim.lsp.Config
 -- return {
