@@ -27,9 +27,9 @@ map("n", "<leader>e", ":NvimTreeToggle<CR>")
 -- buffers
 map("n", "<S-l>", ":bnext<CR>")
 map("n", "<S-h>", ":bprevious<CR>")
-map("n", "<leader>q", ":bd<CR>")
+map("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>")
 --ver split current buffer + move to the new window.
-map("n", "<leader>vs", ":vsplitCR><CMD>wincmd l<CR>")
+map("n", "<leader>vs", ":vsplit<CR><CMD>wincmd l<CR>")
 
 -- buffer position nav + reorder
 -- map('n', '<AS-h>', '<Cmd>BufferMovePrevious<CR>')
@@ -53,8 +53,8 @@ map("n", "<leader>G", ":lua require('fzf-lua').grep_cword()<CR>") --grep word un
 -- map("n", "<leader>Ff", ":lua require('fzf-lua').files({ cwd = '..' })<CR>") --search above
 
 -- terminal stuff
-map("n", "<leader>t", ":ToggleTerm<CR>")
-map("t", "<leader>t", "<C-\\><C-n><CMD>:ToggleTerm<CR>")
+map("n", "<C-t>", ":ToggleTerm<CR>")
+map("t", "<C-t>", "<C-\\><C-n><CMD>:ToggleTerm<CR>")
 map("t", "<Esc>", "<C-\\><C-n>")
 
 -- lsp

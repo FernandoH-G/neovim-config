@@ -9,7 +9,7 @@ local options = {
 	history = 100, --command line history
 	swapfile = false, --swap just gets in the way, usually
 	backup = false,
-	undofile = true, --undos are saved to file
+	undofile = false, --undos are saved to file
 	cursorline = true, --highlight line
 	ttyfast = true, --faster scrolling
 	smoothscroll = true,
@@ -39,6 +39,7 @@ local options = {
 
 	splitkeep = "screen", --stablizie window open/close
 	scrolloff = 999,
+	ma = true,
 }
 
 for k, v in pairs(options) do
