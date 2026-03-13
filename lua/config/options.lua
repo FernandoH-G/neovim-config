@@ -39,7 +39,6 @@ local options = {
 
 	splitkeep = "screen", --stablizie window open/close
 	scrolloff = 999,
-	ma = true,
 }
 
 for k, v in pairs(options) do
