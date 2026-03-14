@@ -66,17 +66,19 @@ require("plugins.toggleterm")
 
 require("mason").setup({})
 require("blink.cmp").setup({
-	-- keymap = {
-	-- 	preset = "none",
-	-- 	["<C-Space>"] = { "show", "hide" },
-	-- 	["<CR>"] = { "accept", "fallback" },
-	-- 	["<C-j>"] = { "select_next", "fallback" },
-	-- 	["<C-k>"] = { "select_prev", "fallback" },
-	-- 	["<Tab>"] = { "snippet_forward", "fallback" },
-	-- 	["<S-Tab>"] = { "snippet_backward", "fallback" },
-	-- },
-	completion = { menu = { auto_show = true } },
+	keymap = {
+		-- preset = "none",
+		["<Tab>"] = { "accept", "fallback" },
+		-- ["<C-Space>"] = { "show", "hide" },
+		-- ["<C-j>"] = { "select_next", "fallback" },
+		-- ["<C-k>"] = { "select_prev", "fallback" },
+	},
+	completion = {
+		menu = { auto_show = true },
+		list = { selection = { preselect = false, auto_insert = false } },
+	},
 	sources = { default = { "lsp", "path", "buffer" } },
+	signature = { enabled = true },
 })
 
 -- vim.defer_fn(function()
@@ -177,6 +179,7 @@ do
 	end
 end
 
+-- This will apply these keymaps to all lsp attaches.
 local function lsp_on_attach(ev)
 	local client = vim.lsp.get_client_by_id(ev.data.client_id)
 	if not client then
@@ -187,32 +190,26 @@ local function lsp_on_attach(ev)
 	local bufnr = ev.buf
 	local opts = { silent = true, buffer = bufnr }
 
-	vim.keymap.set("n", "<leader>gD", vim.lsp.buf.definition, opts)
-	vim.keymap.set("n", "<leader>gd", vim.lsp.buf.implementation(), opts)
-
-	vim.keymap.set("n", "<leader>gS", function()
-		vim.cmd("vsplit")
-		vim.lsp.buf.definition()
-	end, opts)
+	-- gd doesn't apply when it's set here. Only when it's set in mappings.lua.
+	-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, desc = "Go to definition" })
 
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-	if client:supports_method("textDocument/codeAction", bufnr) then
-		vim.keymap.set("n", "<leader>oi", function()
-			vim.lsp.buf.code_action({
-				context = { only = { "source.organizeImports" }, diagnostics = {} },
-				apply = true,
-				bufnr = bufnr,
-			})
-			vim.defer_fn(function()
-				vim.lsp.buf.format({ bufnr = bufnr })
-			end, 50)
-		end, opts)
-	end
+	-- if client:supports_method("textDocument/codeAction", bufnr) then
+	-- 	vim.keymap.set("n", "<leader>oi", function()
+	-- 		vim.lsp.buf.code_action({
+	-- 			context = { only = { "source.organizeImports" }, diagnostics = {} },
+	-- 			apply = true,
+	-- 			bufnr = bufnr,
+	-- 		})
+	-- 		vim.defer_fn(function()
+	-- 			vim.lsp.buf.format({ bufnr = bufnr })
+	-- 		end, 50)
+	-- 	end, opts)
+	-- end
 end
+
 vim.api.nvim_create_autocmd("LspAttach", { group = augroup, callback = lsp_on_attach })
 
 vim.lsp.config["*"] = {

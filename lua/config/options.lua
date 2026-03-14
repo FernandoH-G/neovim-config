@@ -17,6 +17,7 @@ local options = {
 	number = true, --numbering lines
 	relativenumber = true, --toggle bound to leader nn
 	numberwidth = 4,
+	colorcolumn = "80",
 
 	smarttab = true, --indentation stuff
 	cindent = true,

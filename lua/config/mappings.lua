@@ -13,6 +13,7 @@ vim.g.maplocalleader = " "
 map("i", "jk", "<Esc>")
 map("n", "<C-x>", "<C-u>")
 vim.keymap.set("i", "<C-_>", api.toggle.linewise.current)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, desc = "Go to definition" })
 
 -- Toggle nvim tree
 -- Not sure why <C-S-s> doesn't work.
