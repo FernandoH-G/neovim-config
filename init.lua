@@ -85,8 +85,6 @@ require("blink.cmp").setup({
 -- 		--this only makes a difference of +-10ms on initial startup
 -- end, 100)
 
--- vim.lsp.enable('ts-lsp')
-
 --vim.cmd([[set completeopt+=noselect]])
 vim.cmd("colorscheme kanagawa-dragon")
 -- vim.cmd[[set completeopt+=menuone,noselect,popup]]
@@ -194,6 +192,7 @@ local function lsp_on_attach(ev)
 	-- end, opts)
 
 	vim.keymap.set("n", "<leader>gD", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "<leader>gd", vim.lsp.buf.implementation(), opts)
 
 	vim.keymap.set("n", "<leader>gS", function()
 		vim.cmd("vsplit")
@@ -203,19 +202,19 @@ local function lsp_on_attach(ev)
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
-	vim.keymap.set("n", "<leader>D", function()
-		vim.diagnostic.open_float({ scope = "line" })
-	end, opts)
-	vim.keymap.set("n", "<leader>d", function()
-		vim.diagnostic.open_float({ scope = "cursor" })
-	end, opts)
-	vim.keymap.set("n", "<leader>nd", function()
-		vim.diagnostic.jump({ count = 1 })
-	end, opts)
-
-	vim.keymap.set("n", "<leader>pd", function()
-		vim.diagnostic.jump({ count = -1 })
-	end, opts)
+	-- vim.keymap.set("n", "<leader>D", function()
+	-- 	vim.diagnostic.open_float({ scope = "line" })
+	-- end, opts)
+	-- vim.keymap.set("n", "<leader>d", function()
+	-- 	vim.diagnostic.open_float({ scope = "cursor" })
+	-- end, opts)
+	-- vim.keymap.set("n", "<leader>nd", function()
+	-- 	vim.diagnostic.jump({ count = 1 })
+	-- end, opts)
+	--
+	-- vim.keymap.set("n", "<leader>pd", function()
+	-- 	vim.diagnostic.jump({ count = -1 })
+	-- end, opts)
 
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
